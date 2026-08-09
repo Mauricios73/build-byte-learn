@@ -210,7 +210,7 @@ function Index() {
             Every kit unlocks a structured course. You don't get a board and a wiki page — you get
             a path from first GPIO to a custom firmware build.
           </p>
-          <ol className="mt-8 grid gap-px overflow-hidden rounded-md border border-border bg-border sm:grid-cols-2 lg:grid-cols-.  lg:grid-cols-2">
+          <ol className="mt-8 grid gap-px overflow-hidden rounded-md border border-border bg-border sm:grid-cols-2">
             {labs.map((lab, i) => (
               <li key={lab} className="flex items-baseline gap-4 bg-card px-5 py-4">
                 <span className="font-mono text-xs text-primary">
