@@ -103,7 +103,7 @@ const softwareLayers = [
 function ProductPage() {
   const { product } = Route.useLoaderData();
   const [shot, setShot] = useState(0);
-  const [kit, setKit] = useState(bundles[bundles.length - 1].name);
+  const [kit, setKit] = useState(bundles[bundles.length - 1]!.name);
   const [qty, setQty] = useState(1);
 
   const related = useMemo(
@@ -111,6 +111,7 @@ function ProductPage() {
     [product.slug],
   );
 
+  const current = gallery[shot] ?? gallery[0]!;
   const kitPrice = bundles.find((b) => b.name === kit)?.price ?? product.price;
 
   return (
@@ -119,10 +120,10 @@ function ProductPage() {
         <div className="mx-auto grid max-w-7xl gap-12 px-5 py-12 lg:grid-cols-2 lg:py-16">
           <div>
             <img
-              src={gallery[shot].src}
-              alt={gallery[shot].alt}
-              width={gallery[shot].w}
-              height={gallery[shot].h}
+              src={current.src}
+              alt={current.alt}
+              width={current.w}
+              height={current.h}
               className="w-full rounded-md border border-border object-cover"
             />
             <div className="mt-3 grid grid-cols-4 gap-3">
@@ -222,7 +223,7 @@ function ProductPage() {
           <div>
             <h2 className="text-2xl font-bold">What's included</h2>
             <ul className="mt-6 space-y-2.5">
-              {product.includes.map((i) => (
+              {product.includes.map((i: string) => (
                 <li key={i} className="flex gap-3 text-sm">
                   <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                   {i}
