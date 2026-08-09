@@ -37,7 +37,7 @@ const levels = [
     name: "Starter",
     price: 89,
     copy: "Learn electronics and ESP32 fundamentals.",
-    to: "/products/starter-lab" as const,
+    slug: "starter-lab",
     image: starterKit,
     icon: Cpu,
   },
@@ -45,7 +45,7 @@ const levels = [
     name: "Explorer",
     price: 129,
     copy: "Experiment with wireless, NFC, IR and sensors.",
-    to: "/products/wireless-lab" as const,
+    slug: "wireless-lab",
     image: inHand,
     icon: Radio,
   },
@@ -53,7 +53,7 @@ const levels = [
     name: "Advanced",
     price: 179,
     copy: "Build a complete modular hardware research platform.",
-    to: "/products/ultimate-hardware-lab" as const,
+    slug: "ultimate-hardware-lab",
     image: modulesExploded,
     icon: Wrench,
   },
@@ -129,7 +129,12 @@ function Index() {
       <Section eyebrow="Choose your level" title="Three ways in">
         <div className="grid gap-6 md:grid-cols-3">
           {levels.map((l) => (
-            <Link key={l.name} to={l.to} className="group">
+            <Link
+              key={l.name}
+              to="/products/$slug"
+              params={{ slug: l.slug }}
+              className="group"
+            >
               <Card className="h-full p-0">
                 <img
                   src={l.image}
@@ -249,7 +254,8 @@ function Index() {
             it.
           </p>
           <Link
-            to="/products/ultimate-hardware-lab"
+            to="/products/$slug"
+            params={{ slug: "ultimate-hardware-lab" }}
             className="mt-8 inline-flex items-center gap-2 rounded-sm bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5"
           >
             Ultimate Hardware Lab — $179 <ArrowRight className="h-4 w-4" />

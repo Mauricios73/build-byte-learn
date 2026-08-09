@@ -7,7 +7,6 @@ const columns = [
       { to: "/shop", label: "Shop all" },
       { to: "/devices", label: "Devices" },
       { to: "/modules", label: "Modules" },
-      { to: "/products/ultimate-hardware-lab", label: "Ultimate Hardware Lab" },
     ],
   },
   {
